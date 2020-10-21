@@ -203,7 +203,7 @@ public final class Analyser {
     }
 
     private void analyseMain() throws CompileError {
-        throw new Error("Not implemented");
+        /*throw new Error("Not implemented");*/
     }
 
     private void analyseConstantDeclaration() throws CompileError {
