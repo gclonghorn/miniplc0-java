@@ -126,7 +126,6 @@ public class Tokenizer {
             case ')':
                 return new Token(TokenType.RParen, ')', it.previousPos(), it.currentPos());
 
-            // 填入更多状态和返回语句
 
             default:
                 // 不认识这个输入，摸了

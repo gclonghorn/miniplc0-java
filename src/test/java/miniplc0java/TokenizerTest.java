@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TokenizerTest {
-    
+
     @Test
     public void testq() {
-        String classpath=this.getClass().getResource("/").getPath();
+        String classpath = this.getClass().getResource("/").getPath();
         System.out.println(classpath);
         InputStream input;
         try {
@@ -50,7 +50,8 @@ public class TokenizerTest {
         }
         for (Token token : tokens) {
             System.out.println(token.toString());
+        }
+
     }
-  
 }
-}
+
