@@ -15,7 +15,7 @@ public class Tokenizer {
     // 这里本来是想实现 Iterator<Token> 的，但是 Iterator 不允许抛异常，于是就这样了
     /**
      * 获取下一个 Token
-     * 
+     *
      * @return
      * @throws TokenizeError 如果解析有异常则抛出
      */
@@ -36,6 +36,7 @@ public class Tokenizer {
             return lexIdentOrKeyword();
         } else {
             return lexOperatorOrUnknown();
+
         }
     }
 
@@ -50,16 +51,9 @@ public class Tokenizer {
         // Token 的 Value 应填写数字的值
         StringBuffer value =new StringBuffer();
         Pos startpos;
-        if(it.currentPos().col==0&&it.currentPos().row==0)
-        {
-             startpos= it.currentPos();
-        }
-        else {
-             startpos=it.nextPos();}
-        while(!it.isEOF()&&Character.isDigit(it.peekChar())){
-            value.append(Character.toString(it.peekChar()));
-            it.nextChar();
-        }
+        startpos= it.currentPos();
+        do{ value.append(Character.toString(it.nextChar()));}
+        while(Character.isDigit(it.peekChar()));
         Pos endpos=it.currentPos();
         return new Token(TokenType.Uint,value,startpos,endpos);
         /*throw new Error("Not implemented");*/
@@ -78,16 +72,9 @@ public class Tokenizer {
         /*throw new Error("Not implemented");*/
         StringBuffer value =new StringBuffer();
         Pos startpos;
-        if(it.currentPos().col==0&&it.currentPos().row==0)
-        {
-            startpos= it.currentPos();
-        }
-        else {
-            startpos=it.nextPos();}
-        while(!it.isEOF()&&Character.isLetterOrDigit(it.peekChar())){
-            value.append(Character.toString(it.peekChar()));
-            it.nextChar();
-        }
+        startpos= it.currentPos();
+        do{ value.append(Character.toString(it.nextChar()));}
+        while(Character.isLetterOrDigit(it.peekChar()));
         Pos endpos=it.currentPos();
         switch (value.toString()) {
             case "begin":
