@@ -205,6 +205,7 @@ public final class Analyser {
         analyseConstantDeclaration();
         analyseVariableDeclaration();
         analyseStatementSequence();
+
     }
 
     private void analyseConstantDeclaration() throws CompileError {
